@@ -1,0 +1,46 @@
+{% extends "cafeperfeito/base_certificado.html" %}
+
+{% block titulo_page %}
+    Café Perfeito.
+{% endblock %}
+
+{% block content %}
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="form-group row">
+        {% if meuToken %}
+            <label for="cboCertificados">Selecionar certificado de: {{ meuToken.label }} </label>
+            <select class="form-control" name="cboCertificados" id="cboCertificados" required>
+                <script>preencheCertificados('cboCertificados', {{ certificados }})</script>
+                {#                {% for subject in subjects %}#}
+                {#                    <option value="{{ subject }}">{{ subject }}</option>#}
+                {#                {% endfor %}#}
+            </select>
+        {% endif %}
+
+
+
+        {#        <br/>Select Country (with states):#}
+        {#        <select id="country" name="country"></select>#}
+        {#        <br/>State:<br>#}
+        {#        <select name="state" id="state"></select>#}
+        {#        <br/><br>#}
+        {#        <br/>Select Country (without states):#}
+        {#        <select id="country2" name="country2"></select>#}
+        {#        <br/><br>#}
+
+
+        <button type="submit" value="logar">Login</button>
+        <button type="button" onclick="document.getElementById('caixa-certificado').style.display='none'"
+                class="cancelbtn">
+            Cancelar
+        </button>
+    </div>
+{% endblock %}
